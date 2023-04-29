@@ -1,4 +1,4 @@
-name = ghidra-dark-0.0.1
+name = ghidra-dark-0.1.0
 lookAndFeel = Flat Dark
 useDarkDefaults = true
 color.cursor.focused = color.fg
