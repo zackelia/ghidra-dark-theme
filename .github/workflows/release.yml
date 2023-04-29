@@ -1,0 +1,23 @@
+name: Release
+
+on:
+  push:
+    tags:
+    - '*'
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+    - uses: actions/checkout@v3
+    - name: Check tag
+      run: |
+        echo "Using tag $GITHUB_REF_NAME"
+        grep ghidra-dark-$GITHUB_REF_NAME ghidra-dark.theme
+        mv ghidra-dark.theme ghidra-dark-$GITHUB_REF_NAME.theme
+    - uses: ncipollo/release-action@v1
+      with:
+        artifacts: "ghidra-dark-*.theme"
